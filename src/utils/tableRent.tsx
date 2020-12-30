@@ -13,7 +13,7 @@ export function rentTableData (values) {
     let totalPrincipal: number = 0;
     let totalBalance: number = 0;
 
-    console.log(getNetWorthList(values.duration));
+    // console.log(getNetWorthList(values.duration));
 
     for (let i = 0; i < values.duration; i++) {
         const year: number = new Date().getFullYear() + i;
@@ -24,7 +24,7 @@ export function rentTableData (values) {
         // const worth: string = (-Number(yearlyRent) + Number(investmentValue)).toFixed(2);
         totalPrincipal = totalPrincipal + (Number(monthlyInvestment) * 12);
         totalBalance = totalBalance + getYearlyCapitalGain(totalBalance, Number(monthlyInvestment), values.growth, i + 1);
-
+console.log(totalBalance);
         rows.push({title: year, content: [year, rent, yearlyRent, totalPrincipal.toFixed(2), totalBalance.toFixed(2), 'TODO']});
     }
     return rows;

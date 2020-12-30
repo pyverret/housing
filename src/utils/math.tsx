@@ -12,19 +12,20 @@ export function getPercentageIncreasePerYear(percent: number, base: number, year
     return amount;
 }
 
-export function getYearlyCapitalGain (currentInvestment: number, capital: number, interest: number, years: number) {
-    const percent = interest / 100;
+export function getYearlyCapitalGain (principal: number, newCapital: number, annualInterestRate: number, years: number) {
+    const percent = annualInterestRate / 100;
     const frequency = 12;
-    let totalAmount = 0;
-console.log('--------');
-    for (let i = 0; i < frequency; i++) {
-        const temp = totalAmount;
-        totalAmount = (totalAmount + capital) * Math.pow(1 + percent / frequency, years);
-        // console.log((totalAmount - temp).toFixed(2));
-    }
-    // console.log((totalAmount).toFixed(2));
+    let totalValue = 0;
 
-    return totalAmount;
+    for (let i = 0; i < frequency; i++) {
+        // if (i === 0) {
+            // totalValue += newCapital;
+        // } else {
+            totalValue += newCapital*(Math.pow(1 + (percent/frequency), years)); 
+        // }
+    } 
+
+    return totalValue;
 }
 
 type Worth = {
