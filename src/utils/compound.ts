@@ -1,5 +1,5 @@
 type Period = {
-    period: number,
+    id: number,
     currentInvestment: number,
     totalInvestment: number,
     currentInterest: number,
@@ -81,7 +81,7 @@ const calculateCompoundingForWeeklyAndBiWeeklyContribution = (contributionFreque
             investmentPreviousLoop = investmentTotal;
 
             periodList.push({
-                period: period,
+                id: period,
                 currentInvestment: round(currentInvestment),
                 totalInvestment: round(investmentTotal),
                 currentInterest: round(currentInterest),
@@ -162,7 +162,7 @@ const calculateCompoundingForMonthlyToAnnualContribution = (contributionFrequenc
             investmentPreviousLoop = investmentTotal;
 
             periodList.push({
-                period: period,
+                id: period,
                 currentInvestment: round(currentInvestment),
                 totalInvestment: round(investmentTotal),
                 currentInterest: round(currentInterest),
