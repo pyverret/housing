@@ -8,7 +8,7 @@ import {useState, useEffect} from 'react';
 import {generateCompoundingInterest} from '../utils/compound';
 import { DataGrid, ColDef } from '@material-ui/data-grid';
 import { Chart, ArgumentAxis, ValueAxis, AreaSeries, Title, Legend } from '@devexpress/dx-react-chart-material-ui';
-import { Stack, Animation } from '@devexpress/dx-react-chart';
+import { Stack } from '@devexpress/dx-react-chart';
 
 type Period = {
   id: number,
@@ -124,7 +124,6 @@ function Home(): JSX.Element {
             valueField="totalInterest"
             argumentField="id"
           />
-          <Animation />
           <Legend position="bottom" />
           <Title text="Portfolio value" />
           <Stack stacks={[{series: ['Investment', 'Interest']}]} />
