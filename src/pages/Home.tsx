@@ -7,7 +7,7 @@ import Select from '@material-ui/core/Select';
 import {useState, useEffect} from 'react';
 import {generateCompoundingInterest} from '../utils/compound';
 import { DataGrid, ColDef } from '@material-ui/data-grid';
-import { Chart, ArgumentAxis, ValueAxis, AreaSeries, Title, Legend } from '@devexpress/dx-react-chart-material-ui';
+import { Chart, ArgumentAxis, ValueAxis, AreaSeries, Title, Legend, Tooltip } from '@devexpress/dx-react-chart-material-ui';
 import { Stack } from '@devexpress/dx-react-chart';
 
 type Period = {
@@ -16,7 +16,9 @@ type Period = {
   totalInvestment: number,
   currentInterest: number,
   totalInterest: number,
-  totalValue: number
+  totalValue: number,
+  currentRatio: number,
+  totalRatio: number
 }
 
 const contributionFrequencies = [
@@ -42,7 +44,17 @@ const columns: ColDef[] = [
   { field: 'currentInterest', headerName: 'Current Interest', width: 200 },
   { field: 'totalInterest', headerName: 'Total Interest', width: 200 },
   { field: 'totalValue', headerName: 'Total Value', width: 200 },
+  { field: 'currentRatio', headerName: 'Current Interest/Current Contribution %', width: 200 },
+  { field: 'totalRatio', headerName: 'Total Interest/Total Contribution %', width: 200 }
 ];
+
+const customizeTooltip = (pointInfo) => {
+  return {
+    html: `<div><div class="tooltip-header">Title</div><div class="tooltip-body"><div class="series-name">
+    <span class='top-series-name'>Serie Name</span>: </div><div class="value-text"><span class='top-series-value'>Value Text</span></div><div class="series-name">
+    <span class='bottom-series-name'>Serie Name</span>: </div><div class="value-text"><span class='bottom-series-value'>Value</span>% </div></div></div>`
+  }
+}
 
 function Home(): JSX.Element {
   const [initial, setInitial] = useState(0);
@@ -114,6 +126,16 @@ function Home(): JSX.Element {
     <Chart data={data}>
           <ArgumentAxis tickFormat={() => tick => tick} />
           <ValueAxis />
+          {/* <ValueAxis
+          name="totalAmount"
+          position="left"
+          tickInterval={10000}
+        />
+          <ValueAxis
+          name="id"
+          position="bottom"
+          tickInterval={12}
+        /> */}
           <AreaSeries
             name="Investment"
             valueField="totalInvestment"
@@ -124,11 +146,16 @@ function Home(): JSX.Element {
             valueField="totalInterest"
             argumentField="id"
           />
-          <Legend position="bottom" />
+          <Legend position="top" />
           <Title text="Portfolio value" />
+
+          {/* <Tooltip enabled={true} customizeTooltip={customizeTooltip} /> */}
           <Stack stacks={[{series: ['Investment', 'Interest']}]} />
         </Chart>
 
+    <ul>
+      <li>Periode: Periode in wich a change occured to the total amount, it can be a contribution or interest.</li>
+    </ul>
     <DataGrid rows={data} columns={columns} pageSize={20} autoHeight />
   </>;
 }

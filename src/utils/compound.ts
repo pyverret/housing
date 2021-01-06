@@ -4,7 +4,9 @@ type Period = {
     totalInvestment: number,
     currentInterest: number,
     totalInterest: number,
-    totalValue: number
+    totalValue: number,
+    currentRatio: number,
+    totalRatio: number
 }
 
 type Inputs = {
@@ -24,8 +26,16 @@ export const round = (value: number): number => {
     return Math.round((value + Number.EPSILON) * 100) / 100;
 }
 
-export const percent = (value: number): number => {
+const percent = (value: number): number => {
     return (value / 100);
+}
+
+const calculatePercent = (value: number, origin: number = 100): number => {
+    if (origin === 0) {
+        return 0
+    }
+
+    return (value * 100) / origin;
 }
 
 export const compoundingInterest = () => {
@@ -86,7 +96,9 @@ const calculateCompoundingForWeeklyAndBiWeeklyContribution = (contributionFreque
                 totalInvestment: round(investmentTotal),
                 currentInterest: round(currentInterest),
                 totalInterest: round(interestTotal),
-                totalValue: round(valueTotal)
+                totalValue: round(valueTotal),
+                currentRatio: round(calculatePercent(round(currentInterest), round(currentInvestment))),
+                totalRatio: round(calculatePercent(round(interestTotal), round(investmentTotal)))
             });
 
             period++;
@@ -167,7 +179,9 @@ const calculateCompoundingForMonthlyToAnnualContribution = (contributionFrequenc
                 totalInvestment: round(investmentTotal),
                 currentInterest: round(currentInterest),
                 totalInterest: round(interestTotal),
-                totalValue: round(valueTotal)
+                totalValue: round(valueTotal),
+                currentRatio: round(calculatePercent(round(currentInterest), round(currentInvestment))),
+                totalRatio: round(calculatePercent(round(interestTotal), round(investmentTotal)))
             });
         }
 
