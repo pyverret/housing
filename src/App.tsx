@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import CompoundInterest from './pages/CompoundInterest';
 import { ThemeProvider } from "@material-ui/styles";
 import { CssBaseline, createMuiTheme, Container } from "@material-ui/core";
-import TopMenu from './components/TopMenu';
+import Navigation from './components/Navigation';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const theme = createMuiTheme({
@@ -18,7 +18,7 @@ function App() {
       <CssBaseline />
       <main className="App">
       <Router>
-        <TopMenu />
+        <Navigation />
         <Container>
             <Switch>
               <Route exact path="/" component={Home} />
