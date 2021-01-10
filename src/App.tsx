@@ -22,7 +22,7 @@ function App() {
         <Container>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/compound-interest-calculator" component={CompoundInterest} />
+              <Route path="/investment-calculator" component={CompoundInterest} />
               {/* <Route path="information" component={Information} /> */}
               {/* <Route path="contact" component={Contact} /> */}
               {/* <Route path="*" component={NotFound} /> */}

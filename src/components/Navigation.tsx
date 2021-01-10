@@ -18,33 +18,32 @@ import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import HelpIcon from '@material-ui/icons/Help';
 import { NavLink } from "react-router-dom";
 
+const isExcludedKey = (event: React.KeyboardEvent | React.MouseEvent) => event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift');
+
 function Navigation() {
     const [drawer, setDrawer] = useState(false);
 
     const toggleDrawer = (isOpen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-        if (
-            event.type === 'keydown' &&
-            ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
-        ) {
+        if (isExcludedKey(event)) {
             return;
         }
-    
-            setDrawer(isOpen);
-        };
+
+        setDrawer(isOpen);
+    };
 
     return <AppBar position="sticky">
         <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="menu">
-                <MenuIcon onClick={toggleDrawer(true)} />
+            <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
+                <MenuIcon />
                     <Drawer open={drawer} onClose={toggleDrawer(false)}>
                         <List>
                             <ListItem button component={NavLink} to="/">
                                 <ListItemIcon><HomeIcon /></ListItemIcon>
                                 <ListItemText primary="Home" />
                             </ListItem>
-                            <ListItem button component={NavLink} to="/compound-interest-calculator">
+                            <ListItem button component={NavLink} to="/investment-calculator">
                                 <ListItemIcon><TrendingUpIcon /></ListItemIcon>
-                                <ListItemText primary="Compound Interest" />
+                                <ListItemText primary="Investment Calculator" />
                             </ListItem>
                         </List>
 

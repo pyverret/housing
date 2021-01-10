@@ -2,9 +2,9 @@ import { Frequency } from '../enums/frequencies';
 import React, {useState, useEffect} from 'react';
 import {generateCompoundingInterest} from '../utils/compound';
 import { DataGrid, ColDef } from '@material-ui/data-grid';
-import { Chart, ArgumentAxis, ValueAxis, AreaSeries, Title, Legend, Tooltip } from '@devexpress/dx-react-chart-material-ui';
+import { Chart, ArgumentAxis, ValueAxis, AreaSeries, Title, Legend } from '@devexpress/dx-react-chart-material-ui';
 import { Stack } from '@devexpress/dx-react-chart';
-import { TextField, InputLabel, MenuItem, Select, FormControl, Container, Typography } from '@material-ui/core';
+import { TextField, InputLabel, MenuItem, Select, FormControl, Typography } from '@material-ui/core';
 
 type Period = {
     id: number,
@@ -44,14 +44,6 @@ const columns: ColDef[] = [
     { field: 'totalRatio', headerName: 'Total Interest/Total Contribution %', width: 200 }
 ];
 
-// const customizeTooltip = (pointInfo) => {
-//     return {
-//         html: `<div><div class="tooltip-header">Title</div><div class="tooltip-body"><div class="series-name">
-//         <span class='top-series-name'>Serie Name</span>: </div><div class="value-text"><span class='top-series-value'>Value Text</span></div><div class="series-name">
-//         <span class='bottom-series-name'>Serie Name</span>: </div><div class="value-text"><span class='bottom-series-value'>Value</span>% </div></div></div>`
-//     }
-// }
-
 function CompoundInterest(): JSX.Element {
     const [initial, setInitial] = useState(0);
     const [years, setYears] = useState(10);
@@ -76,7 +68,7 @@ function CompoundInterest(): JSX.Element {
   }, [initial, years, compoundingFrequency, interest, contribution, contributionFrequency]);
 
     return <>
-        <Typography variant="h1">Interest Compounding Calculator</Typography>
+        <Typography variant="h1">Investment Calculator</Typography>
     
         <form action="">
             Base Information
@@ -127,16 +119,7 @@ function CompoundInterest(): JSX.Element {
         <Chart data={data}>
             <ArgumentAxis tickFormat={() => tick => tick} />
             <ValueAxis />
-            {/* <ValueAxis
-            name="totalAmount"
-            position="left"
-            tickInterval={10000}
-            />
-            <ValueAxis
-            name="id"
-            position="bottom"
-            tickInterval={12}
-            /> */}
+
             <AreaSeries
                 name="Investment"
                 valueField="totalInvestment"
@@ -150,7 +133,6 @@ function CompoundInterest(): JSX.Element {
             <Legend position="top" />
             <Title text="Portfolio value" />
 
-            {/* <Tooltip enabled={true} customizeTooltip={customizeTooltip} /> */}
             <Stack stacks={[{series: ['Investment', 'Interest']}]} />
         </Chart>
 
