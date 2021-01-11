@@ -44,7 +44,7 @@ const columns: ColDef[] = [
     { field: 'totalRatio', headerName: 'Total Interest/Total Contribution %', width: 200 }
 ];
 
-function CompoundInterest(): JSX.Element {
+export default function InvestmentCalculator(): JSX.Element {
     const [initial, setInitial] = useState(0);
     const [years, setYears] = useState(10);
     const [compoundingFrequency, setCompoundingFrequency] = useState<number>(Frequency.monthly);
@@ -143,5 +143,3 @@ function CompoundInterest(): JSX.Element {
         <DataGrid rows={data} columns={columns} pageSize={20} autoHeight />
     </>;
 }
-
-export default CompoundInterest;

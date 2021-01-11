@@ -2,7 +2,7 @@ import Home from '../Home';
 import { render, screen } from '@testing-library/react'
 import React from 'react';
 
-describe('<Home>', () => {
+describe('<Home />', () => {
     it('Page Should Display', () => {
         render(<Home />);
 
@@ -13,41 +13,59 @@ describe('<Home>', () => {
         expect(title).toHaveTextContent('Home');
     });
 
-    it('Initial Amount should be displayed', () => {
-        render(<Home />);
+    // it('Page Should Display With Title', () => {
+    //     render(<InvestmentCalculator />);
 
-        expect(screen.getByLabelText('Initial Amount')).toBeInTheDocument();        
-    });
+    //     const title = screen.getByRole('heading');
 
-    it('Years Input should be displayed', () => {
-        render(<Home />);
+    //     expect(title).toBeInTheDocument();
+    //     expect(title).toHaveTextContent('Investment Calculator');
+    // });
+    // it('Page Should Display', () => {
+    //     render(<InvestmentCalculator />);
 
-        expect(screen.getByLabelText('Years')).toBeInTheDocument();        
-    });
+    //     // const title = screen.getByRole('heading'); 
+    //     const title = screen.getByText('Investment Calculator'); 
 
-    it('Compounding Frequency Input should be displayed', () => {
-        render(<Home />);
+    //     expect(title).toBeInTheDocument();
+    //     // expect(title).toHaveTextContent('Investment Calculator');
+    // });
 
-        expect(screen.getByLabelText('Compounding Frequency')).toBeInTheDocument();      
-        // TODO: Add test for list instead of rendered options
-    });
+    // it('Initial Amount should be displayed', () => {
+    //     render(<InvestmentCalculator />);
 
-    it('Interest Input should be displayed', () => {
-        render(<Home />);
+    //     expect(screen.getByLabelText('Initial Amount')).toBeInTheDocument();        
+    // });
 
-        expect(screen.getByLabelText('Interest')).toBeInTheDocument();        
-    });
+    // it('Years Input should be displayed', () => {
+    //     render(<InvestmentCalculator />);
 
-    it('Contribution Amount Input should be displayed', () => {
-        render(<Home />);
+    //     expect(screen.getByLabelText('Years')).toBeInTheDocument();        
+    // });
 
-        expect(screen.getByLabelText('Contribution Amount')).toBeInTheDocument();
-    });
+    // it('Compounding Frequency Input should be displayed', () => {
+    //     render(<InvestmentCalculator />);
 
-    it('Contribution Frequency Input should be displayed with options', () => {
-        render(<Home />);
+    //     expect(screen.getByLabelText('Compounding Frequency')).toBeInTheDocument();      
+    //     // TODO: Add test for list instead of rendered options
+    // });
+
+    // it('Interest Input should be displayed', () => {
+    //     render(<InvestmentCalculator />);
+
+    //     expect(screen.getByLabelText('Interest')).toBeInTheDocument();        
+    // });
+
+    // it('Contribution Amount Input should be displayed', () => {
+    //     render(<InvestmentCalculator />);
+
+    //     expect(screen.getByLabelText('Contribution Amount')).toBeInTheDocument();
+    // });
+
+    // it('Contribution Frequency Input should be displayed with options', () => {
+    //     render(<InvestmentCalculator />);
         
-        expect(screen.getByLabelText('Contribution Frequency')).toBeInTheDocument();
-        // TODO: Add test for list instead of rendered options
-    });
+    //     expect(screen.getByLabelText('Contribution Frequency')).toBeInTheDocument();
+    //     // TODO: Add test for list instead of rendered options
+    // });
 });

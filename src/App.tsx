@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './pages/Home';
-import CompoundInterest from './pages/CompoundInterest';
+import InvestmentCalculator from './pages/InvestmentCalculator';
 import { ThemeProvider } from "@material-ui/styles";
 import { CssBaseline, createMuiTheme, Container } from "@material-ui/core";
 import Navigation from './components/Navigation';
@@ -22,7 +22,7 @@ function App() {
         <Container>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/investment-calculator" component={CompoundInterest} />
+              <Route path="/investment-calculator" component={InvestmentCalculator} />
               {/* <Route path="information" component={Information} /> */}
               {/* <Route path="contact" component={Contact} /> */}
               {/* <Route path="*" component={NotFound} /> */}
