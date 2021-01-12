@@ -191,4 +191,65 @@ describe('generateCompoundingInterest', () => {
             expect(result).toEqual(schedule);
         });
     });
+
+    describe('The missing scenarios', () => {
+        it('bi-weekly contribution with quarterly compounding', () => {
+            const schedule = [
+                { currentInterest: 13.78, currentInvestment: 1200, currentRatio: 1.15, id: 1, totalInterest: 13.78, totalInvestment: 1200, totalRatio: 1.15, totalValue: 1213.78 },
+                { currentInterest: 46.43, currentInvestment: 1400, currentRatio: 3.32, id: 2, totalInterest: 60.21, totalInvestment: 2600, totalRatio: 2.32, totalValue: 2660.21 },
+                { currentInterest: 80.28, currentInvestment: 1200, currentRatio: 6.69, id: 3, totalInterest: 140.5, totalInvestment: 3800, totalRatio: 3.7, totalValue: 3940.5 },
+                { currentInterest: 114.6, currentInvestment: 1400, currentRatio: 8.19, id: 4, totalInterest: 255.1, totalInvestment: 5200, totalRatio: 4.91, totalValue: 5455.1 }
+            ];
+
+            const result = generateCompoundingInterest({
+                initialAmount: 0,
+                years: 1,
+                contributionFrequency: 26,
+                compoundingFrequency: 4,
+                interest: 10,
+                contributionAmount: 200
+            });
+
+            expect(result).toEqual(schedule);
+        });
+
+        it('annual contribution with annual compounding', () => {
+            const schedule = [
+                { currentInterest: 0, currentInvestment: 200, currentRatio: 0, id: 1, totalInterest: 0, totalInvestment: 200, totalRatio: 0, totalValue: 200 },
+                { currentInterest: 20, currentInvestment: 200, currentRatio: 10, id: 2, totalInterest: 20, totalInvestment: 400, totalRatio: 5, totalValue: 420 },
+                { currentInterest: 42, currentInvestment: 200, currentRatio: 21, id: 3, totalInterest: 62, totalInvestment: 600, totalRatio: 10.33, totalValue: 662 }
+            ];
+
+            const result = generateCompoundingInterest({
+                initialAmount: 0,
+                years: 3,
+                contributionFrequency: 1,
+                compoundingFrequency: 1,
+                interest: 10,
+                contributionAmount: 200
+            });
+
+            expect(result).toEqual(schedule);
+        });
+
+
+        it('annual contribution with annual compounding', () => {
+            const schedule = [
+                { currentInterest: 9.76, currentInvestment: 400, currentRatio: 2.44, id: 1, totalInterest: 9.76, totalInvestment: 400, totalRatio: 2.44, totalValue: 409.76 },
+                { currentInterest: 50.74, currentInvestment: 400, currentRatio: 12.69, id: 2, totalInterest: 60.5, totalInvestment: 800, totalRatio: 7.56, totalValue: 860.5 },
+                { currentInterest: 95.81, currentInvestment: 400, currentRatio: 23.95, id: 3, totalInterest: 156.31, totalInvestment: 1200, totalRatio: 13.03, totalValue: 1356.31 }
+            ];
+
+            const result = generateCompoundingInterest({
+                initialAmount: 0,
+                years: 3,
+                contributionFrequency: 2,
+                compoundingFrequency: 1,
+                interest: 10,
+                contributionAmount: 200
+            });
+
+            expect(result).toEqual(schedule);
+        });
+    });
 });

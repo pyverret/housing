@@ -35,32 +35,33 @@ function Navigation() {
         <Toolbar>
             <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
                 <MenuIcon />
-                    <Drawer open={drawer} onClose={toggleDrawer(false)}>
-                        <List>
-                            <ListItem button component={NavLink} to="/">
-                                <ListItemIcon><HomeIcon /></ListItemIcon>
-                                <ListItemText primary="Home" />
-                            </ListItem>
-                            <ListItem button component={NavLink} to="/investment-calculator">
-                                <ListItemIcon><TrendingUpIcon /></ListItemIcon>
-                                <ListItemText primary="Investment Calculator" />
-                            </ListItem>
-                        </List>
-
-                        <Divider />
-                        
-                        <List>
-                            <ListItem button component={NavLink} to="/information">
-                                <ListItemIcon><HelpIcon /></ListItemIcon>
-                                <ListItemText primary="Information" />
-                            </ListItem>
-                            <ListItem button component={NavLink} to="/contact">
-                                <ListItemIcon><MailIcon /></ListItemIcon>
-                                <ListItemText primary="Contact" />
-                            </ListItem>
-                        </List>
-                    </Drawer>
             </IconButton>
+
+            <Drawer open={drawer} onClose={toggleDrawer(false)}>
+                <List>
+                    <ListItem button component={NavLink} to="/" onClick={toggleDrawer(false)}>
+                        <ListItemIcon><HomeIcon /></ListItemIcon>
+                        <ListItemText primary="Home" />
+                    </ListItem>
+                    <ListItem button component={NavLink} to="/investment-calculator" onClick={toggleDrawer(false)}>
+                        <ListItemIcon><TrendingUpIcon /></ListItemIcon>
+                        <ListItemText primary="Investment Calculator" />
+                    </ListItem>
+                </List>
+
+                <Divider />
+                
+                <List>
+                    <ListItem button component={NavLink} to="/information" onClick={toggleDrawer(false)}>
+                        <ListItemIcon><HelpIcon /></ListItemIcon>
+                        <ListItemText primary="Information" />
+                    </ListItem>
+                    <ListItem button component={NavLink} to="/contact" onClick={toggleDrawer(false)}>
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary="Contact" />
+                    </ListItem>
+                </List>
+            </Drawer>
 
             <Typography variant="h6">Something</Typography>
         </Toolbar>
