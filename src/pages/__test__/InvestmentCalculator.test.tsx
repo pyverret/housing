@@ -1,12 +1,12 @@
 import InvestmentCalculator from '../InvestmentCalculator';
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 // Mock SVG (getBBox) Not Supported in JSDOM
 beforeEach(() => {
     // naive way to add SVGElement to window if it doesn't exist
     if (!window.SVGElement) {
-      window.SVGElement = {};
+        window.SVGElement = {};
     }
   
     window.SVGElement.prototype.getBBox = () => ({
@@ -15,7 +15,7 @@ beforeEach(() => {
         x: 0,
         y: 0
     });
-  });
+});
 
 describe('<InvestmentCalculator />', () => {
     it('should display with title', () => {

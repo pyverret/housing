@@ -1,4 +1,4 @@
-import {round, percent, generateCompoundingInterest} from '../compound';
+import {round, generateCompoundingInterest} from '../compound';
 import {Frequency} from '../../enums/frequencies';
 test('Frequency', () => {
     expect(Frequency.annually).toBe(1);

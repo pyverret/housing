@@ -24,23 +24,23 @@ export const round = (value: number): number => {
     }
 
     return Math.round((value + Number.EPSILON) * 100) / 100;
-}
+};
 
 const percent = (value: number): number => {
     return (value / 100);
-}
+};
 
-const calculatePercent = (value: number, origin: number = 100): number => {
+const calculatePercent = (value: number, origin = 100): number => {
     if (origin === 0) {
-        return 0
+        return 0;
     }
 
     return (value * 100) / origin;
-}
+};
 
 export const compoundingInterest = () => {
 
-}
+};
 
 export const generateCompoundingInterest = (inputs: Inputs): Period[] => {
     const years = inputs.years;
@@ -56,7 +56,7 @@ export const generateCompoundingInterest = (inputs: Inputs): Period[] => {
     }
 
     return calculateCompoundingForMonthlyToAnnualContribution(contributionFrequency, compoundingFrequency, interestPercent, contributionAmount, numberOfContributions, initialAmount);
-}
+};
 
 const calculateCompoundingForWeeklyAndBiWeeklyContribution = (contributionFrequency: number, compoundingFrequency: number, interestPercent: number, contributionAmount: number, numberOfContributions: number, initialAmount: number): Period[] => {
     const periodList: Period[] = [];
@@ -106,7 +106,7 @@ const calculateCompoundingForWeeklyAndBiWeeklyContribution = (contributionFreque
     }
 
     return periodList;
-}
+};
 
 const getInvestmentTotalWeeklyBiWeekly = (contributionFrequency: number, investmentTotal: number, contributionAmount: number, counter: number): number => {
     if (contributionFrequency === 52) {
@@ -118,21 +118,21 @@ const getInvestmentTotalWeeklyBiWeekly = (contributionFrequency: number, investm
     }
 
     return investmentTotal;
-}
+};
 
 const getInvestmentCurrentWeeklyBiWeekly = (contributionFrequency: number, investmentCurrent: number, contributionAmount: number, interestCurrentLoop: number, counter: number): number => {
     investmentCurrent += interestCurrentLoop;
 
     if (contributionFrequency === 52) {
-        return investmentCurrent += contributionAmount
+        return investmentCurrent += contributionAmount;
     } else {
         if (counter % 2 === 0) {
-            return investmentCurrent += contributionAmount
+            return investmentCurrent += contributionAmount;
         }
     }
 
     return investmentCurrent;
-}
+};
 
 const calculateCompoundingForMonthlyToAnnualContribution = (contributionFrequency: number, compoundingFrequency: number, interestPercent: number, contributionAmount: number, numberOfContributions: number, initialAmount: number): Period[] => {
     const periodList: Period[] = [];
@@ -159,7 +159,7 @@ const calculateCompoundingForMonthlyToAnnualContribution = (contributionFrequenc
 
         if (contributionFlag === 0) {
             investmentTotal += contributionAmount;
-            investmentCurrent += contributionAmount
+            investmentCurrent += contributionAmount;
         }
 
         period = i / tableFlag;
@@ -188,20 +188,20 @@ const calculateCompoundingForMonthlyToAnnualContribution = (contributionFrequenc
     }
 
     return periodList;
-}
+};
 
 const getEffectiveInterest = (interestPercent: number, compoundingFrequency: number): number => {
     // Effective Interest (Annual)
     return Math.pow((1 + (interestPercent / compoundingFrequency)), compoundingFrequency) - 1;
-}
+};
 
 const getWeeklyInterest = (interestPercent: number, compoundingFrequency: number): number => {
     return Math.pow((1 + getEffectiveInterest(interestPercent, compoundingFrequency)), (1 / 52)) - 1;
-}
+};
 
 const getMonthlyInterest = (interestPercent: number, compoundingFrequency: number): number => {
     return Math.pow((1 + getEffectiveInterest(interestPercent, compoundingFrequency)), (1 / 12)) - 1;
-}
+};
 
 const getCompoundingFlag = (contributionFrequency: number, compoundingFrequency: number): number => {
     if (contributionFrequency === 52) {
@@ -214,7 +214,7 @@ const getCompoundingFlag = (contributionFrequency: number, compoundingFrequency:
 
     console.error('No valid Compounding Flag Defined');
     return 0;
-}
+};
 
 const getPeriod = (contributionFrequency: number): number => {
     if (contributionFrequency === 52) {
@@ -226,7 +226,7 @@ const getPeriod = (contributionFrequency: number): number => {
     }
 
     return 0;
-}
+};
 
 const getTableFlag = (compoundingFrequency: number): number => {
     if (compoundingFrequency === 12) {
@@ -234,11 +234,11 @@ const getTableFlag = (compoundingFrequency: number): number => {
     }
 
     if (compoundingFrequency === 4) {
-        return 3
+        return 3;
     }
 
     if (compoundingFrequency === 2) {
-        return 6
+        return 6;
     }
 
     if (compoundingFrequency === 1) {
@@ -247,7 +247,7 @@ const getTableFlag = (compoundingFrequency: number): number => {
 
     console.error('No valid Compounding Frequency Defined');
     return 0;
-}
+};
 
 const getDepositFlag = (contributionFrequency: number): number => {
     if (contributionFrequency === 12 || contributionFrequency === 52) {
@@ -272,6 +272,6 @@ const getDepositFlag = (contributionFrequency: number): number => {
 
     console.error('No valid Compounding Frequency Defined');
     return 0;
-}
+};
 
 export default { round, percent, generateCompoundingInterest };

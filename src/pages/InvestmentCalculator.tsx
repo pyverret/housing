@@ -55,17 +55,17 @@ export default function InvestmentCalculator(): JSX.Element {
 
     useEffect(() => {
         const inputs = {
-        initialAmount: initial,
-        years,
-        contributionFrequency,
-        compoundingFrequency,
-        interest,
-        contributionAmount: contribution
-    };
+            initialAmount: initial,
+            years,
+            contributionFrequency,
+            compoundingFrequency,
+            interest,
+            contributionAmount: contribution
+        };
 
-    console.log(generateCompoundingInterest(inputs));
-    setData(generateCompoundingInterest(inputs));
-  }, [initial, years, compoundingFrequency, interest, contribution, contributionFrequency]);
+        console.log(generateCompoundingInterest(inputs));
+        setData(generateCompoundingInterest(inputs));
+    }, [initial, years, compoundingFrequency, interest, contribution, contributionFrequency]);
 
     return <>
         <Typography variant="h1">Investment Calculator</Typography>
@@ -90,7 +90,7 @@ export default function InvestmentCalculator(): JSX.Element {
                         id="contribution-frequency"
                         value={contributionFrequency}
                         onChange={(event: React.ChangeEvent<{ value: any }>) => setContributionFrequency(parseInt(event.target.value))}
-                        style={{width: "225px"}}
+                        style={{width: '225px'}}
                     >
                         {contributionFrequencies.map((frequency) => <MenuItem value={frequency} key={`contribution-${frequency}`} data-testid="contribution-frequency">{Frequency[frequency]}</MenuItem>)}
                     </Select>
@@ -108,7 +108,7 @@ export default function InvestmentCalculator(): JSX.Element {
                         id="compounding-frequency"
                         value={compoundingFrequency}
                         onChange={(event: React.ChangeEvent<{ value: any }>) => setCompoundingFrequency(parseInt(event.target.value))}
-                        style={{width: "225px"}}
+                        style={{width: '225px'}}
                     >
                         {compoundingFrequencies.map((frequency) => <MenuItem value={frequency} key={`compounding-${frequency}`} data-testid="compounding-frequency">{Frequency[frequency]}</MenuItem>)}
                     </Select>
