@@ -1,5 +1,5 @@
 import InvestmentCalculator from '../InvestmentCalculator';
-import { render, screen } from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import React from 'react';
 
 // Mock SVG (getBBox) Not Supported in JSDOM
@@ -18,22 +18,13 @@ beforeEach(() => {
 });
 
 describe('<InvestmentCalculator />', () => {
-    it('should display with title', () => {
+    it('should display with component', () => {
         render(<InvestmentCalculator />);
 
         const title = screen.getByRole('heading', {name: 'Investment Calculator'});
         expect(title).toBeInTheDocument();
-    });
 
-    it('should have Basic Inputs', () => {
-        render(<InvestmentCalculator />);
-
-        expect(screen.getByLabelText('Initial Amount')).toBeInTheDocument();
-        expect(screen.getByLabelText('Years')).toBeInTheDocument();
-        expect(screen.getByLabelText('Contribution Amount')).toBeInTheDocument();
-        expect(screen.getByLabelText('Contribution Frequency')).toBeInTheDocument();
-        expect(screen.getByLabelText('Interest')).toBeInTheDocument();
-        expect(screen.getByLabelText('Compounding Frequency')).toBeInTheDocument();
+        expect(screen.getByText(/Base Information/i)).toBeInTheDocument();
     });
 
     // TODO: Test Base Graph
