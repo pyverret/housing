@@ -1,10 +1,10 @@
 import React from 'react';
 import Home from './pages/Home';
 import InvestmentCalculator from './pages/InvestmentCalculator';
-import { ThemeProvider } from '@material-ui/styles';
-import { CssBaseline, createMuiTheme, Container } from '@material-ui/core';
+import {ThemeProvider} from '@material-ui/styles';
+import {CssBaseline, createMuiTheme, Container} from '@material-ui/core';
 import Navigation from './components/Navigation';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 const theme = createMuiTheme({
     palette: {
@@ -12,7 +12,7 @@ const theme = createMuiTheme({
     }
 });
 
-function App() {
+function App(): JSX.Element {
     return <>
         <ThemeProvider theme={theme}>
             <CssBaseline />

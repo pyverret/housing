@@ -16,11 +16,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import HelpIcon from '@material-ui/icons/Help';
-import { NavLink } from "react-router-dom";
+import {NavLink} from 'react-router-dom';
 
 const isExcludedKey = (event: React.KeyboardEvent | React.MouseEvent) => event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift');
 
-function Navigation() {
+function Navigation(): JSX.Element {
     const [drawer, setDrawer] = useState(false);
 
     const toggleDrawer = (isOpen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -66,7 +66,7 @@ function Navigation() {
             <Typography variant="h6">Something</Typography>
         </Toolbar>
     </AppBar>;
-};
+}
   
 export default Navigation;
   

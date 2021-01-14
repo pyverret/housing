@@ -8,11 +8,11 @@ describe('<BaseForm />', () => {
 
         render(<BaseForm setData={setData}/>);
 
-        expect(screen.getByLabelText('Initial Amount')).toBeInTheDocument();
-        expect(screen.getByLabelText('Years')).toBeInTheDocument();
-        expect(screen.getByLabelText('Contribution Amount')).toBeInTheDocument();
-        expect(screen.getByLabelText('Contribution Frequency')).toBeInTheDocument();
-        expect(screen.getByLabelText('Interest')).toBeInTheDocument();
-        expect(screen.getByLabelText('Compounding Frequency')).toBeInTheDocument();
+        expect(screen.getByLabelText('Initial Investment')).toBeInTheDocument();
+        expect(screen.getByLabelText('Years to grow')).toBeInTheDocument();
+        expect(screen.getByLabelText('Additional Contribution')).toBeInTheDocument();
+        expect(screen.getByTestId('contribution-frequency')).toBeInTheDocument();
+        expect(screen.getByLabelText('Return rate')).toBeInTheDocument();
+        expect(screen.getByTestId('compounding-frequency')).toBeInTheDocument();
     });
 });

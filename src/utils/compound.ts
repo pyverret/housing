@@ -38,10 +38,6 @@ const calculatePercent = (value: number, origin = 100): number => {
     return (value * 100) / origin;
 };
 
-export const compoundingInterest = () => {
-
-};
-
 export const generateCompoundingInterest = (inputs: Inputs): Period[] => {
     const years = inputs.years;
     const contributionFrequency = inputs.contributionFrequency;
@@ -274,4 +270,4 @@ const getDepositFlag = (contributionFrequency: number): number => {
     return 0;
 };
 
-export default { round, percent, generateCompoundingInterest };
+export default {round, percent, generateCompoundingInterest};
