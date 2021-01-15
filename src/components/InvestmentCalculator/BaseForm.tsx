@@ -1,10 +1,18 @@
 import {TextField, InputLabel, MenuItem, Select, FormControl} from '@material-ui/core';
 import React, {useState, useEffect} from 'react';
-import {generateCompoundingInterest} from '../../utils/compound';
 import {Frequency} from '../../enums/frequencies';
 
 type Props = {
     setData: (object) => void
+}
+
+type Inputs = {
+    initialAmount: number,
+    years: number,
+    contributionFrequency: number,
+    compoundingFrequency: number,
+    interest: number,
+    contributionAmount: number
 }
 
 const contributionFrequencies = [
@@ -32,7 +40,7 @@ export default function InvestmentCalculator({setData}: Props): JSX.Element {
     const [contributionFrequency, setContributionFrequency] = useState<number>(Frequency.weekly);
 
     useEffect(() => {
-        const inputs = {
+        const inputs: Inputs = {
             initialAmount: initial,
             years,
             contributionFrequency,
@@ -41,7 +49,7 @@ export default function InvestmentCalculator({setData}: Props): JSX.Element {
             contributionAmount: contribution
         };
 
-        setData(generateCompoundingInterest(inputs));
+        setData(inputs);
     }, [initial, years, compoundingFrequency, interest, contribution, contributionFrequency, setData]);
 
     return <form action="">

@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {DataGrid, ColDef} from '@material-ui/data-grid';
 import {Chart, ArgumentAxis, ValueAxis, AreaSeries, Title, Legend} from '@devexpress/dx-react-chart-material-ui';
 import {Stack} from '@devexpress/dx-react-chart';
 import BaseForm from '../components/InvestmentCalculator/BaseForm';
+import BaseFormResume from '../components/InvestmentCalculator/BaseFormResume';
+import {generateCompoundingInterest} from '../utils/compound';
+import {Frequency} from '../enums/frequencies';
 
 type Period = {
     id: number,
@@ -26,13 +29,28 @@ const columns: ColDef[] = [
     {field: 'totalRatio', headerName: 'Total Interest/Total Contribution %', width: 200}
 ];
 
+const defaultBaseInput = {
+    initialAmount: 0,
+    years: 10,
+    contributionFrequency: Frequency.weekly,
+    compoundingFrequency: Frequency.monthly,
+    interest: 6,
+    contributionAmount: 100
+};
+
 export default function InvestmentCalculator(): JSX.Element {
     const [data, setData] = useState<Period[]>([]);
+    const [baseInputs, setBaseInputs] = useState(defaultBaseInput);
+
+    useEffect(() => {
+        setData(generateCompoundingInterest(baseInputs));
+    }, [baseInputs]);
 
     return <>
         <h1>Investment Calculator</h1>
     
-        <BaseForm setData={setData} />
+        <BaseForm setData={setBaseInputs} />
+        <BaseFormResume {...baseInputs} />
 
         <Chart data={data}>
             <ArgumentAxis tickFormat={() => tick => tick} />
