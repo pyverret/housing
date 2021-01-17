@@ -23,8 +23,6 @@ describe('<InvestmentCalculator />', () => {
 
         const title = screen.getByRole('heading', {name: 'Investment Calculator'});
         expect(title).toBeInTheDocument();
-
-        expect(screen.getByText(/Base Information/i)).toBeInTheDocument();
     });
 
     // TODO: Test Base Graph
