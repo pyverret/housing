@@ -50,7 +50,7 @@ export default function InvestmentCalculator(): JSX.Element {
         <h1>Investment Calculator</h1>
     
         <BaseForm setData={setBaseInputs} />
-        {data && <BaseFormResume lastPeriod={data[data.length - 1]} {...baseInputs} />}
+        {data.length > 0 && <BaseFormResume lastPeriod={data[data.length - 1]} {...baseInputs} />}
 
         <Chart data={data}>
             <ArgumentAxis tickFormat={() => tick => tick} />
